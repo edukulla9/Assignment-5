@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Login Form</title>
+
+    <link href="http://code.ionicframework.com/1.0.0-rc.5/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <script src="http://code.ionicframework.com/1.0.0-rc.5/js/ionic.bundle.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Login page</title>
+	
+<script type="text/javascript">
+function saveTheInputs(){
+	var userName=document.getElementById("userName").value;
+	var password=document.getElementById("userPassword").value;
+	if(userName=="" || password==""){
+		alert("All fields are mandatory");
+		return false;
+	}
+	else{
+		if(typeof(Storage) !== "undefined") {
+   			localStorage.setItem("userName",userName);
+			return true;
+		} 
+		else {
+    			
+			alert("Your browser doesnot support local storage");
+			return false;
+		}
+		
+	}
+	
+}
+</script>
+</head>
+
+<body>
+<form name="loginForm" method="post" action="ApiCalls.html" onsubmit="return saveTheInputs();">
+<div align="center">
+	<h2>Login Form</h2>
+	<p>User name <input type="text" id="userName" /></p>
+	<p>Password  <input type="password" id="userPassword" /></p>
+<input type="submit" value="Login"/> <input type="reset" />
+</div>
+</form>
+</body>
+</html>
